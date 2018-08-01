@@ -49,7 +49,7 @@ CiudadanoRouter.route('/grupo/:ciudadanoId')
     //res.end('Este metodo retornara la lista de ciudadanos'+req.params.ciudadanoId);
     res.end('aaaaatodo retornara la lista de ciudadanos'+req.params.ciudadanoId);
 })
-CiudadanoRouter.route('/grupo')
+CiudadanoRouter.route('/registro')
 //CiudadanoRouter.route('/')
 .all((req,res,next) => {
     res.statusCode = 200;
@@ -59,5 +59,17 @@ CiudadanoRouter.route('/grupo')
 .get((req,res,next) => {
     //res.end('Este metodo retornara la lista de ciudadanos'+req.params.ciudadanoId);
     res.end('ggg metodo retornara la lista de ciudadanos');
+})
+.post('/registro',(req, res, next) => {
+    ciudadano.create(req.body,(err,ciudadano) => {
+        if(err){next(err)}
+        else{
+            var ok={
+                estado:"ok",
+                id:ciudadano._id
+            }
+            res.json(ok);
+        }
+    })
 })
 module.exports = CiudadanoRouter;
