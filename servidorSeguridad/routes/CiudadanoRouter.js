@@ -1,5 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+var ciudadano = require('../modelos/ciudadano');
 
 const CiudadanoRouter = express.Router();
 

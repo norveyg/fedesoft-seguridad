@@ -28,7 +28,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/asdfs',ciudadanoRouter)
+app.use('/ciudadano',ciudadanoRouter)
 app.use('/hecho_delictivo',hechoDelictivoRouter)
 
 // catch 404 and forward to error handler
