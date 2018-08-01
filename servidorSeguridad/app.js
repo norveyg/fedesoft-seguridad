@@ -6,6 +6,12 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var ciudadanoRouter = require('./routes/ciudadanoRouter');
+var mongoose = require('mongoose');
+var config = require('./config');
+var db = mongoose.connect(config.mongoUrl);
+mongoose.connection.on('error',()=>{console.log("base de datos en problemas")})
+mongoose.connection.once('open',()=>{console.log("Conectado")})
 
 var app = express();
 

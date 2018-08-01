@@ -1,1 +1,1 @@
-prueba2607
+module.exports={'mongoUrl':'mongodb://localhost:27017/claseServidor'}
