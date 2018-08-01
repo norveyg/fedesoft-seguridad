@@ -6,13 +6,13 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-var estudianteRouter=require('./routes/estudianteRouter');
+var ciudadanoRouter = require('./routes/ciudadanoRouter');
 var hechoDelictivoRouter=require('./routes/hechoDelictivoRouter');
-var mongoose=require('mongoose');
-var config=require('./config');
-var db=mongoose.connect('mongodb://localhost:27017/claseServidor');
-mongoose.connection.on('error',()=>{console.log("Base de datos en problemas")})
-mongoose.connection.once('open',()=>{console.log("Se ha conectado correctamente")})
+var mongoose = require('mongoose');
+var config = require('./config');
+var db = mongoose.connect(config.mongoUrl);
+mongoose.connection.on('error',()=>{console.log("base de datos en problemas")})
+mongoose.connection.once('open',()=>{console.log("Conectado")})
 
 var app = express();
 

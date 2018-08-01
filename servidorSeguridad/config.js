@@ -1,3 +1,1 @@
-module.exports={
-    'mongoUrl' : 'mongodb://localhost:27017/claseServidor',
-}
+module.exports={'mongoUrl':'mongodb://localhost:27017/claseServidor'}
