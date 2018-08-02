@@ -26,7 +26,7 @@ hechoDelictivoRouter.route('/')
     res.end('Eliminando todos los hechos delictivos');
 });
 
-estudianteRouter.route('/:hechoDelictivoId')
+hechoDelictivoRouter.route('/:hechoDelictivoId')
 .all((req,res,next) => {
     res.statusCode = 200;
     res.setHeader('Content-Type', 'text/plain');
@@ -35,4 +35,4 @@ estudianteRouter.route('/:hechoDelictivoId')
 .get((req,res,next) => {
     res.end('hecho_delictivo: '+req.params.hechoDelictivoId);
 });
-module.exports = estudianteRouter;
+module.exports = hechoDelictivoRouter;

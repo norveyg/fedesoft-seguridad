@@ -1,4 +1,5 @@
 var mongoose=require('mongoose');
+var passportLocalMongoose = require('passport-local-mongoose');
 var Esquema=mongoose.Schema;
 var usuario=new Esquema({
     username:{
@@ -12,7 +13,11 @@ var usuario=new Esquema({
         type:String,
         required:true,
         validate: /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
+    },
+    admin:   {
+        type: Boolean,
+        default: false
     }
 });
-
+usuario.plugin(passportLocalMongoose);
 module.exports=mongoose.model('Usuario',usuario);

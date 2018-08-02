@@ -10,6 +10,23 @@ var ciudadanoRouter = require('./routes/ciudadanoRouter');
 var hechoDelictivoRouter=require('./routes/hechoDelictivoRouter');
 var mongoose = require('mongoose');
 var config = require('./config');
+var passport = require('passport');
+var authenticate = require('./authenticate');
+
+function auth (req, res, next) {
+  console.log(req.user);
+
+  if (!req.user) {
+    var err = new Error('You are not authenticated!');
+    res.setHeader('WWW-Authenticate', 'Basic');                          
+    err.status = 401;
+    next(err);
+  }
+  else {
+        next();
+  }
+}
+
 var db = mongoose.connect(config.mongoUrl);
 mongoose.connection.on('error',()=>{console.log("base de datos en problemas")})
 mongoose.connection.once('open',()=>{console.log("Conectado")})
@@ -19,6 +36,9 @@ var app = express();
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
+
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.use(logger('dev'));
 app.use(express.json());

@@ -1,6 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-var ciudadano = require('../modelos/ciudadano');
+var ciudadano = require('../models/ciudadano');
 
 const CiudadanoRouter = express.Router();
 
@@ -12,11 +12,11 @@ CiudadanoRouter.route('/')
     res.statusCode = 200;
     res.setHeader('Content-Type', 'text/plain');
     next();
-})
+}) 
 .get((req,res,next) => {
     //res.end('Este metodo retornara la lista de ciudadanos'+req.params.CiudadanoId);
     res.end('Este metodo retornara la lista de ciudadanos');
-})
+}) 
 .post((req, res, next) => {
     res.end('Se agregara el ciudadano ' + req.body.name + ' que vive en : ' + req.body.address);
 })
@@ -60,7 +60,7 @@ CiudadanoRouter.route('/registro')
     //res.end('Este metodo retornara la lista de ciudadanos'+req.params.ciudadanoId);
     res.end('ggg metodo retornara la lista de ciudadanos');
 })
-.post('/registro',(req, res, next) => {
+/*.post('/registro',(req, res, next) => {
     ciudadano.create(req.body,(err,ciudadano) => {
         if(err){next(err)}
         else{
@@ -71,5 +71,5 @@ CiudadanoRouter.route('/registro')
             res.json(ok);
         }
     })
-})
+})*/
 module.exports = CiudadanoRouter;
