@@ -1,5 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+var authenticate = require('../authenticate');
 
 const CiudadanoRouter = express.Router();
 
@@ -12,7 +13,7 @@ CiudadanoRouter.route('/')
     res.setHeader('Content-Type', 'text/plain');
     next();
 })
-.get((req,res,next) => {
+.get(authenticate.verifyUser,(req,res,next) => {
     //res.end('Este metodo retornara la lista de ciudadanos'+req.params.CiudadanoId);
     res.end('Este metodo retornara la lista de ciudadanos');
 })
