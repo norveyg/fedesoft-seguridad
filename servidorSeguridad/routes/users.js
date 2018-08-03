@@ -1,4 +1,6 @@
 var express = require('express');
+var passport = require('passport');
+var authenticate = require('../authenticate');
 var router = express.Router();
 
 /* GET users listing. */
