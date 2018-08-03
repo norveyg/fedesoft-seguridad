@@ -48,12 +48,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-<<<<<<< HEAD
 app.use('/ciudadano',ciudadanoRouter)
 app.use('/hecho_delictivo',hechoDelictivoRouter)
-=======
-app.use('/asdfs',estudianteRouter)
->>>>>>> cd47762e402485e17f62801090afa62b8ef1dfa4
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

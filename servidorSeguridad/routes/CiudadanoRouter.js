@@ -154,10 +154,11 @@ CiudadanoRouter.route('/:ciudadanoId/comentarios/:commentId')
     ciudadano.findById(req.params.ciudadanoId)
     .populate('commentarios.author')    
     .then((ciudadanoCons) => {
-        if (ciudadanoCons != null && ciudadanoCons.commentarios._id != null) {
+        console.log(ciudadanoCons.comentarios.id(req.params.commentId) )
+        if (ciudadanoCons != null && ciudadanoCons.comentarios.id(req.params.commentId) != null) {
             res.statusCode = 200;
             res.setHeader('Content-Type', 'application/json');
-            res.json(ciudadanoCons.commentarios.id);
+            res.json(ciudadanoCons.comentarios.id(req.params.commentId));
         }
         else if (ciudadanoCons == null) {
             err = new Error('Lo siento :( este ciudadano  ' + req.params.ciudadanoId + ' no existe');

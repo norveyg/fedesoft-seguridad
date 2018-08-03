@@ -4,11 +4,10 @@ var authenticate = require('../authenticate');
 var router = express.Router();
 
 /* GET users listing. */
-router.get('/', function(req, res, next) {
+router.get('/', function (req, res, next) {
   res.send('respond with a resource');
 });
 
-<<<<<<< HEAD
 /*router.post('/registro',(req,res,next)=>{
   Usuario.create(req.body,(err,usuario)=>{
     if(err){ next(err)}
@@ -23,31 +22,29 @@ router.get('/', function(req, res, next) {
 })*/
 
 router.post('/signup', (req, res, next) => {
-  Usuario.register(new Usuario({username: req.body.username,correo: req.body.correo}), 
+  Usuario.register(new Usuario({ username: req.body.username, correo: req.body.correo }),
     req.body.password, (err, user) => {
-    if(err) {
-      res.statusCode = 500;
-      res.setHeader('Content-Type', 'application/json');
-      res.json({err: err});
-    }
-    else {
-      passport.authenticate('local')(req, res, () => {
-        res.statusCode = 200;
+      if (err) {
+        res.statusCode = 500;
         res.setHeader('Content-Type', 'application/json');
-        res.json({success: true, status: 'Registration Successful!'});
-      });
-    }
-  });
+        res.json({ err: err });
+      }
+      else {
+        passport.authenticate('local')(req, res, () => {
+          res.statusCode = 200;
+          res.setHeader('Content-Type', 'application/json');
+          res.json({ success: true, status: 'Registration Successful!' });
+        });
+      }
+    });
 });
 
 router.post('/login', passport.authenticate('local'), (req, res) => {
-console.log(req);
-  var token = authenticate.getToken({_id:req.user._id})
+  console.log(req);
+  var token = authenticate.getToken({ _id: req.user._id })
   res.statusCode = 200;
   res.setHeader('Content-Type', 'application/json');
-  res.json({success: true, token: token, status: 'You are successfully logged in!'});
+  res.json({ success: true, token: token, status: 'You are successfully logged in!' });
 });
 
-=======
->>>>>>> cd47762e402485e17f62801090afa62b8ef1dfa4
 module.exports = router;
