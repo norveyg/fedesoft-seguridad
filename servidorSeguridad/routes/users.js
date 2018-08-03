@@ -2,12 +2,13 @@ var express = require('express');
 var passport = require('passport');
 var authenticate = require('../authenticate');
 var router = express.Router();
-var Usuario=require('../models/usuario');
+
 /* GET users listing. */
 router.get('/', function(req, res, next) {
   res.send('respond with a resource');
 });
 
+<<<<<<< HEAD
 /*router.post('/registro',(req,res,next)=>{
   Usuario.create(req.body,(err,usuario)=>{
     if(err){ next(err)}
@@ -47,4 +48,6 @@ console.log(req);
   res.json({success: true, token: token, status: 'You are successfully logged in!'});
 });
 
+=======
+>>>>>>> cd47762e402485e17f62801090afa62b8ef1dfa4
 module.exports = router;
