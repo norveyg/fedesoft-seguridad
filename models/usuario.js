@@ -10,12 +10,13 @@ var usuario = new Esquema({
     },
     password:String,
     primernombre: String,
-    segundonombre: String,
+    apellido: String,
     correo: {
         type: String,
         lowercase: true,
         validate: /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
-    }
+    },
+    facebookId: String
 });
 
 usuario.plugin(passportLocalMongoose);
